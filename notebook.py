@@ -424,7 +424,7 @@ plt.show()
 # Use `np.concatenate(...)` to join the pieces.
 # 
 
-# In[29]:
+# In[ ]:
 
 
 FEATURE_NAMES = [
@@ -456,11 +456,11 @@ def extract_features(image: np.ndarray, kernel: np.ndarray) -> np.ndarray:
     feature_set = np.concatenate([
         channel_means,                     
         channel_stds,
-        np.array([sample_brightest], dtype=np.float32), 
+        np.array([brightest_channel], dtype=np.float32), 
         np.array([mean_edge, std_edge], dtype=np.float32),
         np.array([mean_row_std], dtype=np.float32)
 ])
-    return feature_set
+    return feature_set.astype(np.float32)
 
 sample_features = extract_features(sample_image, EDGE_KERNEL)
 print("feature shape:", sample_features.shape)
